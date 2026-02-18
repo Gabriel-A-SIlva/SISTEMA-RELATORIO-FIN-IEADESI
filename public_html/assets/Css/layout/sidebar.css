@@ -1,0 +1,178 @@
+/* =============== Navigation ================ */
+.navigation {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background: var(--primary);
+    border-left: 10px solid var(--primary);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 80px;
+}
+
+/* ===== LOGO / TITULO ===== */
+
+.logo-item {
+    margin-bottom: 50px;
+    padding: 30px 20px;
+    pointer-events: none;
+}
+
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffffff;
+    position: relative;
+}
+
+/* Linha decorativa moderna */
+.logo-text::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: var(--warning);
+    margin-top: 8px;
+    border-radius: 10px;
+}
+
+/* Subtítulo */
+.logo-sub {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 6px;
+    letter-spacing: 1px;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    transition: var(--transition);
+}
+
+/* ITEM HOVER */
+.navigation ul li:hover {
+    background-color: var(--bg-body);
+}
+
+/* ITEM ATIVO VIA JS */
+.navigation ul li.active {
+    background-color: var(--bg-body);
+}
+
+/* PRIMEIRO ITEM (LOGO) */
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+/* ================= LINKS E BUTTONS ================= */
+
+.navigation ul li a,
+.navigation ul li button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #fff;
+    transition: var(--transition);
+    font: inherit;
+    padding: 0;
+}
+
+/* TEXTO HOVER */
+.navigation ul li:hover a,
+.navigation ul li:hover button {
+    color: var(--primary);
+}
+
+/* TEXTO ATIVO */
+.navigation ul li.active a,
+.navigation ul li.active button {
+    color: var(--primary);
+}
+
+/* ================= ÍCONES ================= */
+
+.navigation ul li a .icon,
+.navigation ul li button .icon {
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul li a .icon ion-icon,
+.navigation ul li button .icon ion-icon {
+    font-size: 1.75rem;
+}
+
+/* ================= TÍTULO ================= */
+
+.navigation ul li a .title,
+.navigation ul li button .title {
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+
+/* ================= CURVA EXTERNA ================= */
+
+/* Hover */
+.navigation ul li:hover button::before,
+.navigation ul li:hover a::before,
+.navigation ul li.active button::before,
+.navigation ul li.active a::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--bg-body);
+    pointer-events: none;
+}
+
+.navigation ul li:hover button::after,
+.navigation ul li:hover a::after,
+.navigation ul li.active button::after,
+.navigation ul li.active a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--bg-body);
+    pointer-events: none;
+}

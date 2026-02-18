@@ -1,0 +1,322 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("../base/color.css");
+
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body {
+     font-family: var(--font-family);
+     background-color: var(--bg-body);
+     color: var(--text-main);
+     min-height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     overflow: hidden;
+     position: relative;
+}
+
+/* --- BACKGROUND DECORATIVO --- */
+/* Ajustado para ser sutil no tema claro */
+.blob {
+     position: absolute;
+     filter: blur(80px);
+     z-index: -1;
+     opacity: 0.15;
+     /* Opacidade reduzida para não brigar com o fundo claro */
+     animation: float 10s infinite alternate;
+}
+
+.blob-1 {
+     top: -10%;
+     left: -10%;
+     width: 500px;
+     height: 500px;
+     background: var(--brand-teal);
+}
+
+.blob-2 {
+     bottom: -10%;
+     right: -10%;
+     width: 400px;
+     height: 400px;
+     background: var(--brand-orange);
+     animation-delay: -2s;
+}
+
+.blob-3 {
+     top: 40%;
+     left: 40%;
+     width: 300px;
+     height: 300px;
+     background: var(--brand-teal);
+     animation-duration: 15s;
+}
+
+@keyframes float {
+     0% {
+          transform: translate(0, 0) scale(1);
+     }
+
+     100% {
+          transform: translate(30px, 50px) scale(1.1);
+     }
+}
+
+/* --- CARD PRINCIPAL --- */
+.login-card {
+     width: 100%;
+     max-width: 400px;
+     padding: 48px 40px;
+     background: var(--bg-card);
+     border: 1px solid var(--border-color);
+     border-radius: 24px;
+     /* Sombra mais suave e elegante para tema claro */
+     box-shadow: 0 20px 40px var(--shadow-color);
+     position: relative;
+     overflow: hidden;
+     animation: cardEnter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Faixa colorida no topo para dar identidade */
+.login-card::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 6px;
+     background: linear-gradient(
+          to right,
+          var(--brand-teal),
+          var(--brand-orange)
+     );
+}
+
+@keyframes cardEnter {
+     from {
+          opacity: 0;
+          transform: translateY(20px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+.header {
+     text-align: center;
+     margin-bottom: 32px;
+}
+
+.header h1 {
+     font-size: 1.75rem;
+     font-weight: 700;
+     letter-spacing: -0.5px;
+     margin-bottom: 8px;
+     color: var(--brand-teal);
+     /* Título na cor da marca */
+}
+
+.header p {
+     color: var(--text-muted);
+     font-size: 0.95rem;
+     line-height: 1.5;
+}
+
+/* --- INPUTS --- */
+.input-group {
+     position: relative;
+     margin-bottom: 20px;
+}
+
+.input-field {
+     width: 100%;
+     padding: 16px 16px 16px 48px;
+     background: var(--bg-body);
+     /* Fundo cinza bem claro */
+     border: 1px solid var(--border-color);
+     border-radius: 8px;
+     color: var(--text-main);
+     font-size: 0.95rem;
+     font-family: inherit;
+     outline: none;
+     transition: var(--transition);
+}
+
+/* Ícone dentro do input */
+.input-icon {
+     position: absolute;
+     left: 16px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--text-muted);
+     font-size: 1.1rem;
+     transition: var(--transition);
+     pointer-events: none;
+}
+
+/* Floating Label */
+.floating-label {
+     position: absolute;
+     left: 48px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--text-muted);
+     pointer-events: none;
+     transition: var(--transition);
+     font-size: 0.95rem;
+     background-color: transparent;
+     padding: 0 4px;
+}
+
+/* Estados de Foco e Preenchido */
+.input-field:focus,
+.input-field:valid,
+.input-field.has-content {
+     border-color: var(--brand-teal);
+     background: #fff;
+     box-shadow: 0 0 0 4px rgba(37, 107, 122, 0.1);
+}
+
+.input-field:focus ~ .floating-label,
+.input-field:valid ~ .floating-label,
+.input-field.has-content ~ .floating-label {
+     top: -10px;
+     left: 12px;
+     font-size: 0.75rem;
+     color: var(--brand-teal);
+     background-color: var(--bg-card);
+     /* Cobre a linha da borda */
+     font-weight: 600;
+}
+
+.input-field:focus ~ .input-icon {
+     color: var(--brand-teal);
+}
+
+/* Select customizado */
+select.input-field {
+     appearance: none;
+     cursor: pointer;
+     color: var(--text-main);
+}
+
+/* Toggle Password */
+.toggle-password {
+     position: absolute;
+     right: 16px;
+     top: 50%;
+     transform: translateY(-50%);
+     color: var(--text-muted);
+     cursor: pointer;
+     transition: 0.3s;
+}
+
+.toggle-password:hover {
+     color: var(--brand-teal);
+}
+
+/* --- BOTÃO --- */
+.btn-login {
+     width: 100%;
+     padding: 16px;
+     background: var(--action-btn);
+     /* Laranja */
+     border: none;
+     border-radius: 8px;
+     color: white;
+     font-size: 1rem;
+     font-weight: 600;
+     cursor: pointer;
+     position: relative;
+     overflow: hidden;
+     transition: var(--transition);
+     margin-top: 12px;
+}
+
+.btn-login:hover {
+     background-color: var(--action-btn-hover);
+     transform: translateY(-2px);
+     box-shadow: 0 8px 20px rgba(205, 92, 69, 0.3);
+}
+
+.btn-login:active {
+     transform: translateY(0);
+}
+
+.btn-content {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     gap: 10px;
+}
+
+/* Loading Spinner */
+.loader {
+     width: 18px;
+     height: 18px;
+     border: 2px solid rgba(255, 255, 255, 0.3);
+     border-radius: 50%;
+     border-top-color: #fff;
+     animation: spin 0.8s ease-in-out infinite;
+     display: none;
+}
+
+@keyframes spin {
+     to {
+          transform: rotate(360deg);
+     }
+}
+
+/* Toast Notification */
+.toast {
+     position: fixed;
+     top: 24px;
+     left: 50%;
+     transform: translateX(-50%) translateY(-100px);
+     background: var(--bg-card);
+     border-left: 4px solid var(--brand-teal);
+     padding: 16px 24px;
+     border-radius: 8px;
+     display: flex;
+     align-items: center;
+     gap: 12px;
+     color: var(--text-main);
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+     z-index: 100;
+     font-weight: 500;
+}
+
+.toast.active {
+     transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+     border-left-color: #4ade80;
+}
+
+.toast.success i {
+     color: #4ade80;
+}
+
+.toast.error {
+     border-left-color: #f87171;
+}
+
+.toast.error i {
+     color: #f87171;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+     .login-card {
+          margin: 20px;
+          padding: 32px 24px;
+     }
+}

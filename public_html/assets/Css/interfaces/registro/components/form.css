@@ -1,0 +1,214 @@
+/* ==========================================
+   SISTEMA FINANCEIRO - ENTRADAS & SAÍDAS
+========================================== */
+
+/* BASE */
+.registro-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+}
+
+/* HEADER */
+.registro-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.registro-icone {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.registro-titulo {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* LABEL PADRÃO */
+.registro-label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* SALDO */
+.registro-saldo-anterior {
+    margin-bottom: 40px;
+}
+
+.registro-input-grande-wrapper {
+    position: relative;
+}
+
+.registro-input-grande {
+    width: 100%;
+    background: var(--bg-body);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 18px 50px;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: right;
+    outline: none;
+    transition: var(--transition);
+}
+
+/* LISTA */
+.registro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.registro-item,
+.registro-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.registro-item:hover,
+.registro-row:hover {
+    background: var(--color-gray-lighter);
+}
+
+.registro-nome {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* INPUT */
+.registro-input-wrapper,
+.registro-input-group {
+    position: relative;
+    width: 180px;
+}
+
+.registro-input {
+    width: 100%;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 35px;
+    font-size: 18px;
+    text-align: right;
+    font-weight: 500;
+    transition: var(--transition);
+    outline: none;
+}
+
+.registro-input:focus,
+.registro-input-grande:focus {
+    background: #fff;
+}
+
+/* PREFIXO */
+.registro-prefixo,
+.registro-currency {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+}
+
+/* TOTAL */
+.registro-total-box,
+.registro-total {
+    margin-top: 35px;
+    border-radius: var(--radius-md);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registro-total-valor {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* =====================================================
+   VARIAÇÃO: ENTRADAS (VERDE)
+===================================================== */
+
+.registro--entrada .registro-icone {
+    background: var(--success-bg);
+    color: var(--success-text);
+}
+
+.registro--entrada .registro-titulo {
+    color: var(--success-text);
+}
+
+.registro--entrada .registro-input:focus,
+.registro--entrada .registro-input-grande:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 3px var(--success-bg);
+}
+
+.registro--entrada .registro-prefixo,
+.registro--entrada .registro-currency {
+    color: var(--success-text);
+}
+
+.registro--entrada .registro-total-box,
+.registro--entrada .registro-total {
+    background: var(--success-bg);
+}
+
+.registro--entrada .registro-total-label,
+.registro--entrada .registro-total-valor {
+    color: var(--success-text);
+}
+
+/* =====================================================
+   VARIAÇÃO: SAÍDAS (VERMELHO)
+===================================================== */
+
+.registro--saida .registro-icone {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.registro--saida .registro-titulo {
+    color: var(--danger-text);
+}
+
+.registro--saida .registro-input:focus,
+.registro--saida .registro-input-grande:focus {
+    border-color: var(--danger);
+    box-shadow: 0 0 0 3px var(--danger-bg);
+}
+
+.registro--saida .registro-prefixo,
+.registro--saida .registro-currency {
+    color: var(--danger-text);
+}
+
+.registro--saida .registro-total-box,
+.registro--saida .registro-total {
+    background: var(--danger-bg);
+}
+
+.registro--saida .registro-total-label,
+.registro--saida .registro-total-valor {
+    color: var(--danger-text);
+}

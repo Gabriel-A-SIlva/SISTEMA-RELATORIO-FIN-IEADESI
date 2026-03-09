@@ -29,15 +29,6 @@
             </button>
         </li>
 
-        <!-- RELATÓRIO -->
-        <li>
-            <button class="btn_open" data-target="section_relatorio_main">
-                <span class="icon">
-                    <ion-icon name="chatbubble-outline"></ion-icon>
-                </span>
-                <span class="title">Relatório</span>
-            </button>
-        </li>
 
         <!-- SAIR -->
         <li>

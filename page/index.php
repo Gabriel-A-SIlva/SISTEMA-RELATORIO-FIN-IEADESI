@@ -86,7 +86,6 @@
 
         // 🔥 Inicia já ativando Dashboard
         ativar("section_dashboard_main");
-
     });
     </script>
 

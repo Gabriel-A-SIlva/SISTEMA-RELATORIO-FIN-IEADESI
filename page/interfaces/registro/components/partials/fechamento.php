@@ -24,11 +24,11 @@
             </div>
 
             <!-- BOTÕES MOBILE DENTRO DO PAINEL -->
-            <div class="fechamento-actions-mobile">
-                <button onclick="salvarRelatorio()" class="btn-mobile-salvar">
+            <div class="fechamento-actions">
+                <button onclick="salvarRelatorio()" class="btn-salvar-flutuante no-print">
                     <i class="fa-solid fa-floppy-disk"></i> SALVAR RELATÓRIO
                 </button>
-                <button onclick="limparFormulario()" class="btn-mobile-limpar">
+                <button onclick="limparFormulario()" class="btn-limpar-flutuante no-print">
                     <i class="fa-solid fa-trash"></i> LIMPAR TUDO
                 </button>
             </div>

@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db = 'mscaldos'; // mantenha lowercase por padrão
+$db = 'sistemaFinanceiro'; // mantenha lowercase por padrão
 $user = 'root';
 $pass = '1245';
 $charset = 'utf8mb4';

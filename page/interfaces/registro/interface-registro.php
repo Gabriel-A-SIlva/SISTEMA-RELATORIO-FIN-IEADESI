@@ -1,30 +1,88 @@
 <?php include __DIR__ . '/components/header.php' ?>
-<div class="main-grid">
-    <div class="left-column">
-        <?php include_once __DIR__ . '/components/entradas.php'; ?>
-        <?php include_once __DIR__ . '/components/saidas.php'; ?>
-    </div>
-
-    <?php include_once __DIR__ . '/components/fechamento.php'; ?>
-</div>
-<!-- BOTÕES FLUTUANTES DESKTOP (só aparecem no desktop) -->
-<button onclick="salvarRelatorio()" class="btn-salvar-flutuante no-print">
-    <i class="fa-solid fa-floppy-disk"></i> SALVAR RELATÓRIO
-</button>
-<button onclick="limparFormulario()" class="btn-limpar-flutuante no-print">
-    <i class="fa-solid fa-trash"></i> LIMPAR TUDO
-</button>
-<!-- BOTÃO FLUTUANTE MOBILE - FECHAMENTO -->
-<button id="btn-abrir-fechamento" class="btn-fechamento-flutuante no-print">
-    <i class="fa-solid fa-chart-pie"></i>
-    <span>FECHAMENTO</span>
-    <i class="fa-solid fa-chevron-left arrow"></i>
-</button>
-<footer>
-    GILEADE • Movimento Diário • Sistema Moderno 2026
-</footer>
+<?php include __DIR__ . '/components/registro.php' ?>
+<?php include __DIR__ . '/components/forms.php' ?>
 
 <script>
+document.getElementById('data-inicio').addEventListener('change', function() {
+    if (!this.value) return;
+
+    const inicio = new Date(this.value);
+    const fim = new Date(inicio);
+    fim.setDate(fim.getDate() + 6);
+
+    document.getElementById('data-fim').value =
+        fim.toISOString().split('T')[0];
+});
+// Função para adicionar os campos extras
+window.addCampoExtra = function(tipo) {
+    // tipo será 'entradas' ou 'saidas'
+    const containerId = tipo === 'entradas' ? 'entradas-extras-list' : 'saidas-extras-list';
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const row = document.createElement('div');
+    row.classList.add('registro-dynamic-row');
+
+    // Montando a estrutura da linha.
+    // Usamos o placeholder com base no tipo.
+    const placeholderTexto = tipo === 'entradas' ? 'Ex: Doação Anônima' : 'Ex: Compra de Copos';
+    const classeInputValor = `valor-extra-${tipo}`; // Importante para o cálculo!
+
+    row.innerHTML = `
+        <input type="text" class="registro-input-descricao" placeholder="${placeholderTexto}">
+        
+        <div class="registro-main-input-wrapper">
+            <span class="registro-main-currency">R$</span>
+            <input type="text" 
+                   inputmode="numeric" 
+                   placeholder="0,00" 
+                   class="registro-main-input ${classeInputValor}" 
+                   onkeyup="formatarMoeda(this); calcular();">
+        </div>
+
+        <button type="button" class="btn-delete-row" onclick="removerCampoExtra(this)">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    `;
+
+    container.appendChild(row);
+};
+
+// Função para remover e recalcular
+window.removerCampoExtra = function(btn) {
+    btn.closest('.registro-dynamic-row').remove();
+    calcular(); // É obrigatório recalcular quando remover um valor
+};
+window.toggleRegistroMain = function() {
+    const mainSection = document.querySelector('.main-registro');
+    const divPeriodo = document.querySelector('#filtro-tempo-registro')
+    // Verifica se está escondido
+    if (mainSection.style.display === 'none' || mainSection.style.display === '') {
+        // Exibe como flex ou grid para manter as colunas alinhadas
+        mainSection.style.display = 'flex';
+        divPeriodo.style.display = 'none';
+
+    }
+};
+window.abrirRegistroModal = function(tipo) {
+    const overlay = document.getElementById('registro-modal-overlay');
+    const modalArea = document.getElementById('modal-registro-area');
+    const modalCong = document.getElementById('modal-registro-congregacao');
+
+    overlay.style.display = 'flex';
+
+    if (tipo === 'area') {
+        modalArea.style.display = 'block';
+        modalCong.style.display = 'none';
+    } else if (tipo === 'congregacao') {
+        modalCong.style.display = 'block';
+        modalArea.style.display = 'none';
+    }
+};
+
+window.fecharRegistroModal = function() {
+    document.getElementById('registro-modal-overlay').style.display = 'none';
+};
 // ==================== TOGGLE FECHAMENTO MOBILE ====================
 const btnAbrir = document.getElementById('btn-abrir-fechamento');
 const painelFechamento = document.querySelector('.col-fechamento');
@@ -174,19 +232,4 @@ function limparFormulario() {
         calcular();
     }
 }
-
-window.onload = () => {
-    const hoje = new Date().toISOString().split('T')[0];
-    document.getElementById('data-relatorio').value = hoje;
-
-    document
-        .querySelectorAll('input')
-        .forEach((inp) => inp.addEventListener('input', calcular));
-    calcular();
-
-    console.log(
-        '%c✅ GILEADE Movimento Diário - Layout exatamente como você pediu!',
-        'color:#27629f; font-size:14px',
-    );
-};
 </script>

@@ -44,29 +44,21 @@ if (strpos($uri, '/admin/cadastros/get-interface/') === 0) {
 // --------------------------------------------------
 $segments = array_values(array_filter(explode('/', trim($uri, '/'))));
 
-$allowedAreas = ['client', 'admin', 'main'];
+$allowedAreas = ['area', 'congregacao', 'entradas', 'saidas'];
 
 if (count($segments) >= 2) {
-    $area = $segments[0];
+    $entity = $segments[0];
 
-    if (!in_array($area, $allowedAreas, true)) {
+    if (!in_array($entity, $allowedAreas, true)) {
         // Área não permitida
         http_response_code(404);
         echo '404 - Área não permitida';
         exit;
     }
 
-    if ($area === 'admin' && count($segments) >= 4) {
-        // Admin mantém o esquema antigo: /admin/subarea/entity/action
-        [$area, $subarea, $entity, $action] = $segments;
+        [$entity, $action] = $segments;
         $controllerPath = dirname(__DIR__) 
-            . "/controller/{$area}/{$subarea}/{$entity}/{$action}.php";
-    } else {
-        // Client ou Main: esquema reduzido /client/auth/arquivo
-        [$area, $subarea, $action] = $segments;
-        $controllerPath = dirname(__DIR__) 
-            . "/controller/{$area}/{$subarea}/{$action}.php";
-    }
+            . "/controller/{$entity}/{$action}.php";
 
     if (is_file($controllerPath)) {
         require $controllerPath;

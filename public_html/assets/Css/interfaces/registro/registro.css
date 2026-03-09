@@ -6,14 +6,14 @@
    LAYOUT PRINCIPAL
 ========================================== */
 
-.main-grid {
+.main-registro {
     display: grid;
     grid-template-columns: 7fr 5fr;
     gap: 30px;
     padding: 40px;
 }
 
-.left-column {
+.left-column-registro {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -46,13 +46,13 @@ footer {
 
 /* Tablet */
 @media (max-width: 1024px) {
-    .main-grid {
+    .main-registro {
         grid-template-columns: 1fr;
         padding: 24px;
         gap: 24px;
     }
 
-    .left-column {
+    .left-column-registro {
         gap: 24px;
     }
 
@@ -63,7 +63,7 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
-    .main-grid {
+    .main-registro {
         padding: 16px;
         gap: 20px;
     }
@@ -97,4 +97,156 @@ footer {
     .registro-input {
         width: 100%;
     }
+}
+
+/*forms*/
+/* ====================== MODAL REGISTRO ====================== */
+.registro-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none; /* Escondido por padrão */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    transition: var(--transition);
+}
+
+.registro-modal {
+    background: var(--bg-card);
+    width: 90%;
+    max-width: 450px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: none; /* Escondido por padrão */
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.registro-modal-header {
+    background: var(--primary);
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.registro-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.registro-modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.registro-modal-close:hover {
+    opacity: 1;
+}
+
+/* FORMULÁRIO INTERNO */
+.registro-form {
+    padding: 24px;
+}
+
+.registro-form-group {
+    margin-bottom: 20px;
+}
+
+.registro-form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.registro-form-group input,
+.registro-form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    background: var(--color-gray-lighter);
+    outline: none;
+    transition: var(--transition);
+}
+
+.registro-form-group input:focus,
+.registro-form-group select:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.registro-form-group small {
+    display: block;
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+/* RODAPÉ E BOTÕES */
+.registro-modal-footer {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.registro-btn-cancelar {
+    flex: 1;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background: white;
+    color: var(--text-muted);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.registro-btn-cancelar:hover {
+    background: #fdfdfd;
+    color: var(--accent);
+}
+
+.registro-btn-salvar {
+    flex: 2;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.registro-btn-salvar:hover {
+    background: var(--action-btn-hover);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }

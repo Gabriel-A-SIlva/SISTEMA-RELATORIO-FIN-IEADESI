@@ -1,214 +1,353 @@
 /* ==========================================
-   SISTEMA FINANCEIRO - ENTRADAS & SAÍDAS
+   SISTEMA FINANCEIRO - REGISTRO MAIN
 ========================================== */
 
-/* BASE */
-.registro-card {
+/* BASE DO CARD */
+.registro-main-card {
     background: var(--bg-card);
     border-radius: var(--radius-lg);
-    padding: 30px;
+    padding: 32px;
     border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
+.registro-main-card:hover {
+    box-shadow: var(--shadow-md);
+}
+/* =====================================================
+   PERÍODO DO RELATÓRIO
+===================================================== */
+
+.registro-main--periodo .registro-main-icon {
+    background: var(--primary-bg);
+    color: var(--primary);
+}
+
+.registro-main--periodo .registro-main-title {
+    color: var(--primary);
+}
+
+.registro-periodo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.registro-periodo-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.registro-input-date {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-main);
+    transition: var(--transition);
+    outline: none;
+}
+
+.registro-input-date:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-bg);
+}
 /* HEADER */
-.registro-header {
+.registro-main-header {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
-.registro-icone {
-    width: 40px;
-    height: 40px;
+.registro-main-icon {
+    width: 44px;
+    height: 44px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
 }
 
-.registro-titulo {
-    font-size: 28px;
-    font-weight: 600;
+.registro-main-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
-/* LABEL PADRÃO */
-.registro-label {
+.registro-main-title {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+/* DIVISÓRIA */
+.registro-main-divider {
+    border: none;
+    border-top: 1px dashed var(--border-color);
+    margin: 24px 0;
+}
+
+/* LABELS E TEXTOS */
+.registro-main-label {
     display: block;
     font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* SALDO */
-.registro-saldo-anterior {
-    margin-bottom: 40px;
-}
-
-.registro-input-grande-wrapper {
-    position: relative;
-}
-
-.registro-input-grande {
-    width: 100%;
-    background: var(--bg-body);
-    border: 2px solid transparent;
-    border-radius: var(--radius-md);
-    padding: 18px 50px;
-    font-size: 28px;
-    font-weight: 600;
-    text-align: right;
-    outline: none;
-    transition: var(--transition);
-}
-
-/* LISTA */
-.registro-lista {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.registro-item,
-.registro-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 10px;
-    border-radius: var(--radius-sm);
-    transition: var(--transition);
-}
-
-.registro-item:hover,
-.registro-row:hover {
-    background: var(--color-gray-lighter);
-}
-
-.registro-nome {
+.registro-main-label-item {
     font-size: 14px;
-    color: var(--text-muted);
+    color: var(--text-main);
     font-weight: 500;
 }
 
-/* INPUT */
-.registro-input-wrapper,
-.registro-input-group {
-    position: relative;
-    width: 180px;
+/* GRID RESPONSIVO PARA ITENS */
+.registro-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px 24px;
 }
 
-.registro-input {
+.registro-main-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--color-gray-lighter);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.registro-main-item:hover {
+    background: white;
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+/* INPUTS E WRAPPERS */
+.registro-main-input-wrapper {
+    position: relative;
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.registro-main-input-wrapper.grande {
+    width: 100%;
+    max-width: 300px;
+}
+
+.registro-main-input {
     width: 100%;
     background: var(--bg-input);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-sm);
-    padding: 12px 35px;
-    font-size: 18px;
+    padding: 10px 12px 10px 36px; /* Espaço para o R$ */
+    font-size: 15px;
     text-align: right;
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--text-main);
     transition: var(--transition);
     outline: none;
 }
 
-.registro-input:focus,
-.registro-input-grande:focus {
-    background: #fff;
+.registro-main-input-wrapper.grande .registro-main-input {
+    font-size: 24px;
+    padding: 16px 16px 16px 48px;
+    border-width: 2px;
 }
 
-/* PREFIXO */
-.registro-prefixo,
-.registro-currency {
+.registro-main-currency {
     position: absolute;
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
     font-weight: 600;
+    color: var(--text-muted);
+    pointer-events: none;
 }
 
-/* TOTAL */
-.registro-total-box,
-.registro-total {
-    margin-top: 35px;
+.registro-main-input-wrapper.grande .registro-main-currency {
+    font-size: 20px;
+    left: 16px;
+}
+
+/* TOTAIS */
+.registro-main-total-box {
+    margin-top: 32px;
     border-radius: var(--radius-md);
-    padding: 20px;
+    padding: 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.registro-total-valor {
-    font-size: 32px;
+.registro-main-total-label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.registro-main-total-valor {
+    font-size: 28px;
+    font-weight: 800;
+}
+/* ==========================================
+   SISTEMA FINANCEIRO - CAMPOS DINÂMICOS
+========================================== */
+.registro-dynamic-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.registro-dynamic-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
     font-weight: 700;
 }
 
+.registro-dynamic-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+/* Linha Dinâmica */
+.registro-dynamic-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    background: var(--color-gray-lighter);
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.registro-dynamic-row:focus-within {
+    background: white;
+    border-color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Input de Texto (Descrição) */
+.registro-input-descricao {
+    flex: 2;
+    background: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    color: var(--text-main);
+    outline: none;
+    font-weight: 500;
+}
+
+.registro-input-descricao::placeholder {
+    color: #a0a0a0;
+}
+
+/* Botão de Deletar Linha */
+.btn-delete-row {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.btn-delete-row:hover {
+    background: var(--danger-bg);
+}
+
+/* Botão de Adicionar Nova Linha */
+.registro-btn-add {
+    width: 100%;
+    background: transparent;
+    border: 1px dashed var(--border-color);
+    color: var(--text-muted);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.registro-btn-add:hover {
+    background: var(--color-gray-lighter);
+    color: var(--text-main);
+    border-color: #ccc;
+}
 /* =====================================================
    VARIAÇÃO: ENTRADAS (VERDE)
 ===================================================== */
-
-.registro--entrada .registro-icone {
+.registro-main--entrada .registro-main-icon {
     background: var(--success-bg);
     color: var(--success-text);
 }
-
-.registro--entrada .registro-titulo {
+.registro-main--entrada .registro-main-title {
     color: var(--success-text);
 }
-
-.registro--entrada .registro-input:focus,
-.registro--entrada .registro-input-grande:focus {
+.registro-main--entrada .registro-main-input:focus {
     border-color: var(--success);
     box-shadow: 0 0 0 3px var(--success-bg);
 }
-
-.registro--entrada .registro-prefixo,
-.registro--entrada .registro-currency {
-    color: var(--success-text);
+.registro-main--entrada .registro-main-item:focus-within {
+    border-color: var(--success);
+    background: white;
 }
-
-.registro--entrada .registro-total-box,
-.registro--entrada .registro-total {
+.registro-main--entrada .registro-main-total-box {
     background: var(--success-bg);
-}
-
-.registro--entrada .registro-total-label,
-.registro--entrada .registro-total-valor {
     color: var(--success-text);
 }
 
 /* =====================================================
    VARIAÇÃO: SAÍDAS (VERMELHO)
 ===================================================== */
-
-.registro--saida .registro-icone {
+.registro-main--saida .registro-main-icon {
     background: var(--danger-bg);
     color: var(--danger-text);
 }
-
-.registro--saida .registro-titulo {
+.registro-main--saida .registro-main-title {
     color: var(--danger-text);
 }
-
-.registro--saida .registro-input:focus,
-.registro--saida .registro-input-grande:focus {
+.registro-main--saida .registro-main-input:focus {
     border-color: var(--danger);
     box-shadow: 0 0 0 3px var(--danger-bg);
 }
-
-.registro--saida .registro-prefixo,
-.registro--saida .registro-currency {
-    color: var(--danger-text);
+.registro-main--saida .registro-main-item:focus-within {
+    border-color: var(--danger);
+    background: white;
 }
-
-.registro--saida .registro-total-box,
-.registro--saida .registro-total {
+.registro-main--saida .registro-main-total-box {
     background: var(--danger-bg);
+    color: var(--danger-text);
 }
 
-.registro--saida .registro-total-label,
-.registro--saida .registro-total-valor {
-    color: var(--danger-text);
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+    .registro-main-grid {
+        grid-template-columns: 1fr;
+    }
+    .registro-main-item {
+        padding: 12px;
+    }
+    .registro-main-total-box {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
 }

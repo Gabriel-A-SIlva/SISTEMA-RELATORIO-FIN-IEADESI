@@ -1,6 +1,65 @@
 @import url('./components/form.css');
 @import url('./components/header.css');
 @import url('./components/fechamento.css');
+/* ====================== GRID + CARDS - VERSÃO LIMPA E GARANTIDA ====================== */
+.app-main-content {
+    max-width: 1280px;
+}
+
+.congregacoes-container {
+    padding-top: 20px;
+}
+
+/* ====================== FILTRO DE ÁREAS (PILLS) ====================== */
+.area-filters-wrapper {
+    margin-top: 32px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.area-pills-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.area-pills-scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.area-pill {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+}
+
+.area-pill:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.area-pill.active {
+    background: white;
+    color: var(--primary, #2563eb);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-color: white;
+}
 
 /* ==========================================
    LAYOUT PRINCIPAL
@@ -11,6 +70,7 @@
     grid-template-columns: 7fr 5fr;
     gap: 30px;
     padding: 40px;
+    align-items: start; /* ← ESSA LINHA É FUNDAMENTAL para o sticky funcionar */
 }
 
 .left-column-registro {

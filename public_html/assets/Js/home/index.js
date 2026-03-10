@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     criarGraficos();
     carregarAreas();
 });
-document.addEventListener('DOMContentLoaded', () => {
-    window.mudarVisaoArea('1');
-});
 // ==================== MENU SIDEBAR - ITEM ATIVO ====================
 let list = document.querySelectorAll('.navigation li');
 
@@ -31,15 +28,6 @@ function activeLink() {
 // Adiciona evento de CLIQUE (não mais mouseover)
 list.forEach((item) => {
     item.addEventListener('click', activeLink);
-});
-// ======================== INICIALIZAÇÃO ========================
-document.addEventListener('DOMContentLoaded', () => {
-    const select = document.getElementById('select-area');
-    if (select) {
-        select.addEventListener('change', (e) =>
-            window.mudarVisaoArea(e.target.value),
-        );
-    }
 });
 // ==================== CONTROLE DE ABAS + FILTROS (VERSÃO LIMPA) ====================
 document.addEventListener('DOMContentLoaded', function () {

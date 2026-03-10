@@ -14,7 +14,6 @@ export const AreaService = {
             return [];
         }
     },
-    /* CREATE - Criar nova área
     async criar(dadosArea) {
         try {
             const response = await fetch('/area/create', {
@@ -27,7 +26,8 @@ export const AreaService = {
             console.error('Erro ao criar área:', error);
             return { status: 'error', message: 'Falha na conexão' };
         }
-    },*/
+    },
+
     async carregarEmTodosSelects() {
         const areas = await this.listar();
 

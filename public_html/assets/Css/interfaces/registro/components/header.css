@@ -1,238 +1,409 @@
-/* ====================== REGISTRO HEADER ====================== */
-.registro-header {
-    background: linear-gradient(135deg, var(--primary), #1e4f85);
+/* ====================== HEADER MODERNO MELHORADO ====================== */
+.registro-header-modern {
+    background: linear-gradient(135deg, var(--primary), #2563eb);
     color: white;
-    box-shadow: var(--shadow-lg);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 4px solid var(--warning);
+    padding: 40px 24px 48px;
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.25);
+    position: relative;
+    overflow: hidden;
+    transition:
+        padding 0.4s ease,
+        max-height 0.4s ease,
+        opacity 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
-.registro-container {
-    max-width: 1200px;
+.registro-header-modern::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.08));
+    pointer-events: none;
+}
+
+.registro-header-modern.is-collapsed {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+/* Conteúdo centralizado com largura máxima */
+.registro-header-content {
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 20px;
-}
-
-.registro-nav-main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 0;
-    gap: 20px;
+    gap: 24px;
+    flex-wrap: wrap;
 }
 
-/* MARCA */
-.registro-brand {
+.header-left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 28px;
+    flex: 1;
+    min-width: 280px;
 }
 
-.registro-logo-wrapper {
-    width: 52px;
-    height: 52px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
-    border-radius: var(--radius-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.registro-brand-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.registro-tagline {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--warning);
-}
-
-.registro-title-h1 {
+.header-left .title {
     font-size: 28px;
     font-weight: 800;
+    margin: 0;
     letter-spacing: -0.5px;
-    line-height: 1;
 }
 
-/* GRUPO DE AÇÕES */
-.registro-actions {
-    display: flex;
-    gap: 10px;
+.header-left .subtitle {
+    font-size: 15px;
+    opacity: 0.85;
+    margin: 4px 0 0 0;
+    font-weight: 500;
 }
 
-.registro-btn-action {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+/* Select melhorado */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+}
+
+.select-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
+    z-index: 2;
+}
+
+.registro-select-area {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid rgba(255, 255, 255, 0.25);
     color: white;
-    padding: 8px 16px;
-    border-radius: 99px;
-    font-size: 13px;
+    padding: 14px 20px 14px 54px;
+    border-radius: 14px;
+    font-size: 16px;
     font-weight: 600;
-    cursor: pointer;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.registro-select-area:focus {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: white;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+    outline: none;
+}
+
+/* Botões do header */
+.header-right {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-add.modern {
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    transition: var(--transition);
-    text-transform: uppercase;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.registro-btn-action:hover {
+.btn-add.outline {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    color: white;
+}
+
+.btn-add.outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: white;
+    transform: translateY(-3px);
+}
+
+.btn-add.solid {
     background: white;
-    color: var(--primary);
-    transform: translateY(-2px);
-}
-
-.registro-btn-action.destaque {
-    background: var(--warning);
     color: var(--primary);
     border: none;
 }
 
-.registro-btn-action svg {
-    width: 16px;
-    height: 16px;
-    stroke-width: 3;
+.btn-add.solid:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* BARRA DE FILTROS */
-.registro-filter-bar {
-    background: rgba(0, 0, 0, 0.08);
-    padding: 10px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+/* Responsividade do header */
+@media (max-width: 768px) {
+    .registro-header-modern {
+        padding: 28px 16px 36px;
+    }
+    .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+    .registro-select-area {
+        max-width: 100%;
+    }
+}
+/* ====================== CARDS (GRID E ITEM) ====================== */
+.congregacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    padding: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10; /* Fica por cima do fundo do header */
 }
 
-.registro-filter-inner {
-    display: flex;
-    gap: 12px;
-}
-
-.registro-select-field {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    padding: 6px 14px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    cursor: pointer;
-    outline: none;
-    min-width: 180px;
-}
-
-.registro-select-field option {
-    color: var(--text-main);
-}
-
-/* ====================== SEÇÃO DE DATA ====================== */
-.registro-date-card {
-    background: var(--bg-card);
-    margin-top: 30px;
+.congregacao-card {
+    background: #111827;
+    border-radius: 16px;
     padding: 24px;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
-}
-
-.registro-label-caps {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-.registro-preset-row {
+    box-shadow: var(--card-shadow);
+    border: 1px solid #e2e8f0;
+    transition:
+        all 0.3s ease,
+        opacity 0.3s ease,
+        transform 0.3s ease;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.congregacao-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.congregacao-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: #cbd5e1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
-.registro-preset-item {
-    background: var(--color-gray-lighter);
-    border: 1px solid var(--border-color);
+.card-info h3 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    font-weight: 700;
     color: var(--text-main);
-    padding: 10px 18px;
-    border-radius: 99px;
-    font-size: 14px;
+}
+
+.area-badge {
+    background: #e0f2fe;
+    color: #0284c7;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Ações do Card */
+.card-actions-top {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-icon.edit {
+    background: #f1f5f9;
+    color: #475569;
+}
+.btn-icon.edit:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+.btn-icon.delete {
+    background: #fef2f2;
+    color: #ef4444;
+}
+.btn-icon.delete:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-relatorio-full {
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: var(--primary);
+    padding: 12px;
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
-
-.registro-preset-item:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-}
-
-.registro-preset-item.ativo {
+.btn-relatorio-full:hover {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    box-shadow: 0 4px 10px var(--shadow-color);
 }
 
-/* RANGE PERSONALIZADO */
-.registro-custom-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 20px;
-    background: var(--color-gray-lighter);
-    border-radius: var(--radius-md);
-    border: 1px dashed var(--neutral);
+/* ====================== CONTROLE DE VIEWS (TRANSIÇÕES) ====================== */
+.view-section {
+    display: none;
+    opacity: 0;
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
-.registro-input-box {
+.view-section.active {
+    display: grid; /* ou flex/grid dependendo do layout */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====================== ELEMENTOS DO RELATÓRIO ====================== */
+.relatorio-header-actions {
+    max-width: 1280px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-voltar-link {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+.btn-voltar-link:hover {
+    color: var(--primary);
+}
+
+.relatorio-titulo {
+    font-size: 20px;
+    color: var(--text-main);
+    border-left: 3px solid var(--primary);
+    padding-left: 12px;
+}
+
+.btn-voltar-flutuante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px; /* Mudei para direita para seguir padrões de UX (ações secundárias) */
+    background: white;
+    color: var(--text-main);
+    border: 1px solid #e2e8f0;
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 99;
+}
+.btn-voltar-flutuante:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ====================== CABEÇALHO DO GRID ====================== */
+.congregacoes-header-bar {
+    max-width: 1280px;
+    margin: 24px auto 4px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.congregacoes-header-text {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
-.registro-input-box label {
-    font-size: 12px;
-    font-weight: 600;
+.congregacoes-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.congregacoes-subtitle {
+    margin: 0;
+    font-size: 14px;
     color: var(--text-muted);
 }
 
-.registro-input-date {
-    padding: 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-color);
-    font-size: 14px;
-    outline: none;
+.congregacoes-subtitle span {
+    font-weight: 600;
+    color: var(--primary);
 }
 
-.registro-input-date:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px var(--primary-soft);
+.congregacoes-count-pill {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid #bfdbfe;
 }
 
-/* RESPONSIVIDADE */
 @media (max-width: 768px) {
-    .registro-nav-main {
+    .congregacoes-header-bar {
         flex-direction: column;
         align-items: flex-start;
-    }
-    .registro-actions {
-        width: 100%;
-        overflow-x: auto;
-        padding-bottom: 10px;
-    }
-    .registro-filter-inner {
-        flex-direction: column;
-    }
-    .registro-select-field {
-        width: 100%;
     }
 }

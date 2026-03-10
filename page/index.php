@@ -36,13 +36,12 @@
                 <?php include __DIR__ . '/interfaces/registro/interface-registro.php'; ?>
             </div>
 
-            <div id="section_relatorio_main" class="section_lista" style="display:none;">
-                <?php include __DIR__ . '/interfaces/relatorio/interface-relatorio.php'; ?>
-            </div>
-
         </main>
         <div id="global_toast" class="toast" aria-live="polite" role="status"></div>
     </div>
+    <script src="/assets/Js/home/index.js" type="module"></script>
+    <script src="/assets/Js/registro/index.js" type="module"></script>
+
     <script>
     document.addEventListener("DOMContentLoaded", function() {
 
@@ -89,7 +88,6 @@
     });
     </script>
 
-    <script type="module" src="/assets/Js/index.js"></script>
 </body>
 
 </html>

@@ -106,8 +106,3 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<script type="module" src="/assets/Js/utils/index.js"></script>
-<script type="module" src="/assets/Js/mock/index.js"></script>
-<script type="module" src="/assets/Js/campo/index.js"></script>
-<script type="module" src="/assets/Js/area/index.js"></script>
-<script type="module" src="/assets/Js/index.js"></script>

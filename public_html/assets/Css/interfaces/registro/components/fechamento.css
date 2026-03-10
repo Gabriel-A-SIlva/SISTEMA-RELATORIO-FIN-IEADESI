@@ -1,20 +1,12 @@
-/* ====================== DESKTOP - PAINEL FIXO ====================== */
 .col-fechamento {
-    position: fixed;
-    right: 0;
-    top: 30%;
-    transform: translateY(-10%);
-    width: 35%;
-    max-width: 420px;
-    z-index: 1000;
+    position: sticky;
+    top: 10px;
+    width: 100%;
 }
-
-/* STICKY + BOX PRINCIPAL */
 .sticky-box {
     position: sticky;
-    top: 32px;
+    top: 10px;
 }
-
 .total-box {
     background: linear-gradient(135deg, var(--primary), #1f4f80);
     border-top-left-radius: 24px;
@@ -22,23 +14,19 @@
     padding: 24px;
     color: #ffffff;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
-/* ESTILOS INTERNOS */
+} /* ESTILOS INTERNOS */
 .fechamento-title {
-    font-size: 14 px;
+    font-size: 14px;
     font-weight: 600;
     text-align: center;
     margin-bottom: 12px;
 }
-
 .fechamento-content {
     display: flex;
     flex-direction: column;
     gap: 24px;
     font-size: 14px;
 }
-
 .linha {
     display: flex;
     justify-content: space-between;
@@ -51,12 +39,10 @@
     font-weight: bold;
     font-size: 14px;
 }
-
 .divider {
     height: 1px;
     background: rgba(255, 255, 255, 0.3);
 }
-
 .saldo {
     align-items: flex-end;
 }
@@ -68,7 +54,6 @@
     font-size: 24px;
     font-weight: bold;
 }
-
 .transportar-box {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
@@ -82,10 +67,7 @@
     font-size: 28px;
     font-weight: bold;
     color: var(--warning);
-}
-
-/* ====================== BOTÕES FLUTUANTES DESKTOP ====================== */
-/* Mostra ações dentro do painel */
+} /* ====================== BOTÕES FLUTUANTES DESKTOP ====================== */ /* Mostra ações dentro do painel */
 .fechamento-actions {
     display: flex;
     flex-direction: column;
@@ -108,7 +90,6 @@
     border: none;
     transition: all 0.3s ease;
 }
-
 .btn-salvar-flutuante {
     background: var(--warning);
     color: var(--primary);
@@ -117,7 +98,6 @@
     background: var(--primary);
     color: var(--warning);
 }
-
 .btn-limpar-flutuante {
     background: var(--bg-card);
     color: var(--danger);
@@ -125,14 +105,12 @@
 .btn-limpar-flutuante:hover {
     background: var(--danger);
     color: white;
-}
-
-/* ====================== BOTÃO FLUTUANTE MOBILE ====================== */
+} /* ====================== BOTÃO FLUTUANTE MOBILE ====================== */
 .btn-fechamento-flutuante {
-    display: none; /* escondido no desktop */
-    position: fixed;
+    display: none;
+    position: sticky;
     bottom: 24px;
-    right: 24px;
+    right: 0;
     background: linear-gradient(135deg, var(--primary), #1e4f85);
     color: white;
     border: none;
@@ -143,30 +121,31 @@
     box-shadow: 0 12px 35px rgba(39, 98, 159, 0.5);
     align-items: center;
     gap: 12px;
-    z-index: 10000;
+    z-index: 1999;
     transition: all 0.4s ease;
 }
 .btn-fechamento-flutuante:hover {
     transform: scale(1.08) translateY(-4px);
 }
-
 /* ====================== MOBILE - SLIDING PANEL + OVERLAY ====================== */
 @media (max-width: 1024px) {
+    /* PAINEL FECHAMENTO - SEMPRE NA TELA ATUAL (viewport) */
     .col-fechamento {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 92%;
-        max-width: 420px;
-        transition: right 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        bottom: auto !important;
+        left: auto !important;
+        width: 92% !important;
+        max-width: 420px !important;
+        height: 100dvh !important; /* funciona melhor no celular */
         padding-top: 80px;
         overflow-y: auto;
-        z-index: 2000;
-        transform: none;
+        z-index: 2010 !important;
     }
 
     .col-fechamento.open {
-        right: 0;
+        right: 0 !important;
     }
 
     /* Overlay */
@@ -199,19 +178,19 @@
         display: none;
     }
 }
-
 /* ====================== OVERLAY MOBILE ====================== */
 .overlay-mobile {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 1998;
-
     opacity: 0;
     visibility: hidden;
     transition:
         opacity 0.3s ease,
         visibility 0.3s ease;
+
+    /* ← ADICIONE ESTA LINHA */
+    z-index: 1990; /* menor que 1999 (botão) e 2000 (painel) */
 }
 
 /* Quando aberto */

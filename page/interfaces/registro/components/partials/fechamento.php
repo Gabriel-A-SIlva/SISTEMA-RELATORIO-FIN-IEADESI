@@ -35,6 +35,3 @@
         </div>
     </div>
 </div>
-
-<!-- OVERLAY MOBILE -->
-<div id="overlay-mobile" class="overlay-mobile"></div>

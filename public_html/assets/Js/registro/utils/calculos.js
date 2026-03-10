@@ -1,4 +1,4 @@
-import { getValor } from './utils.js';
+import { getValor } from './index.js';
 
 export function calcular() {
     // 1. Entradas Fixas

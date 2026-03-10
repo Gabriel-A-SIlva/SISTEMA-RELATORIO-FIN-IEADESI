@@ -12,17 +12,17 @@ export function addCampoExtra(tipo) {
     const classeInputValor = `valor-extra-${tipo}`;
 
     row.innerHTML = `
-        <input type="text" class="registro-input-descricao" placeholder="${placeholderTexto}">
-        <div class="registro-main-input-wrapper">
-            <span class="registro-main-currency">R$</span>
-            <input type="text" inputmode="numeric" placeholder="0,00" 
-                   class="registro-main-input ${classeInputValor}" 
-                   onkeyup="formatarMoeda(this); calcular();">
-        </div>
-        <button type="button" class="btn-delete-row" onclick="removerCampoExtra(this)">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-    `;
+            <input type="text" class="registro-input-descricao" placeholder="${placeholderTexto}">
+            <div class="registro-main-input-wrapper">
+                <span class="registro-main-currency">R$</span>
+                <input type="text" inputmode="numeric" placeholder="0,00" 
+                    class="registro-main-input ${classeInputValor}" 
+                    onkeyup="formatarMoeda(this); calcular();">
+            </div>
+            <button type="button" class="btn-delete-row" onclick="removerCampoExtra(this)">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        `;
 
     container.appendChild(row);
 }

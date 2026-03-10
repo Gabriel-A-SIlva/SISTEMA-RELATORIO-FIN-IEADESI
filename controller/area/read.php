@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require __DIR__ . '/../../config/conexao_db.php';
+require_once __DIR__ . '/../../config/conexao_db.php';
 
 try {
 
